@@ -10,13 +10,9 @@ import Foundation
 
 // MARK: - ElementsForm
 class ElementsForm: Codable {
-    let queue: Int?
-    let groupType: String?
     let fields: [Field]?
     
-    init(queue: Int?, groupType: String?, fields: [Field]?) {
-        self.queue = queue
-        self.groupType = groupType
+    init(fields: [Field]?) {
         self.fields = fields
     }
 }

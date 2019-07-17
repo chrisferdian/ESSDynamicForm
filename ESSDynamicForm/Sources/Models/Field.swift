@@ -10,12 +10,10 @@ import Foundation
 
 // MARK: - Field
 class Field: Codable {
-    let ordered: Int?
-    let label, type, placeholder, id: String?
+    let placeholder, id: String?
+    let type: TypeEnum?
     
-    init(ordered: Int?, label: String?, type: String?, placeholder: String?, id: String?) {
-        self.ordered = ordered
-        self.label = label
+    init(type: TypeEnum?, placeholder: String?, id: String?) {
         self.type = type
         self.placeholder = placeholder
         self.id = id
