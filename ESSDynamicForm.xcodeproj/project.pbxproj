@@ -17,11 +17,11 @@
 		B60B932922DF311500EC460B /* OnoffRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B931822DF311500EC460B /* OnoffRadioButton.swift */; };
 		B60B932A22DF311500EC460B /* ESSTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B931922DF311500EC460B /* ESSTextField.swift */; };
 		B60B932B22DF311500EC460B /* ESSTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B931A22DF311500EC460B /* ESSTextView.swift */; };
-		B60B932C22DF311500EC460B /* ESSDynamicForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B931C22DF311500EC460B /* ESSDynamicForm.swift */; };
-		B60B932D22DF311500EC460B /* ScrollableStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B931D22DF311500EC460B /* ScrollableStackView.swift */; };
-		B60B932E22DF311500EC460B /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B931F22DF311500EC460B /* UIColorExtension.swift */; };
-		B60B932F22DF311500EC460B /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B932022DF311500EC460B /* ImagePicker.swift */; };
-		B60B933022DF311500EC460B /* TypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B932122DF311500EC460B /* TypeEnum.swift */; };
+		B60B933522DF339300EC460B /* ScrollableStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B933322DF339300EC460B /* ScrollableStackView.swift */; };
+		B60B933622DF339300EC460B /* ESSDynamicForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B933422DF339300EC460B /* ESSDynamicForm.swift */; };
+		B60B933922DF339800EC460B /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B933722DF339800EC460B /* UIColorExtension.swift */; };
+		B60B933A22DF339800EC460B /* TypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B933822DF339800EC460B /* TypeEnum.swift */; };
+		B60B933C22DF33B800EC460B /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B933B22DF33B800EC460B /* ImagePicker.swift */; };
 		B6DB7E3722D728DF00A4BF26 /* ESSDynamicForm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6DB7E2D22D728DF00A4BF26 /* ESSDynamicForm.framework */; };
 		B6DB7E3C22D728DF00A4BF26 /* ESSDynamicFormTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DB7E3B22D728DF00A4BF26 /* ESSDynamicFormTests.swift */; };
 		B6DB7E3E22D728DF00A4BF26 /* ESSDynamicForm.h in Headers */ = {isa = PBXBuildFile; fileRef = B6DB7E3022D728DF00A4BF26 /* ESSDynamicForm.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -48,11 +48,11 @@
 		B60B931822DF311500EC460B /* OnoffRadioButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnoffRadioButton.swift; sourceTree = "<group>"; };
 		B60B931922DF311500EC460B /* ESSTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ESSTextField.swift; sourceTree = "<group>"; };
 		B60B931A22DF311500EC460B /* ESSTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ESSTextView.swift; sourceTree = "<group>"; };
-		B60B931C22DF311500EC460B /* ESSDynamicForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ESSDynamicForm.swift; sourceTree = "<group>"; };
-		B60B931D22DF311500EC460B /* ScrollableStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollableStackView.swift; sourceTree = "<group>"; };
-		B60B931F22DF311500EC460B /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
-		B60B932022DF311500EC460B /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
-		B60B932122DF311500EC460B /* TypeEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeEnum.swift; sourceTree = "<group>"; };
+		B60B933322DF339300EC460B /* ScrollableStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollableStackView.swift; sourceTree = "<group>"; };
+		B60B933422DF339300EC460B /* ESSDynamicForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ESSDynamicForm.swift; sourceTree = "<group>"; };
+		B60B933722DF339800EC460B /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		B60B933822DF339800EC460B /* TypeEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeEnum.swift; sourceTree = "<group>"; };
+		B60B933B22DF33B800EC460B /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		B6DB7E2D22D728DF00A4BF26 /* ESSDynamicForm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ESSDynamicForm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6DB7E3022D728DF00A4BF26 /* ESSDynamicForm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESSDynamicForm.h; sourceTree = "<group>"; };
 		B6DB7E3122D728DF00A4BF26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -119,25 +119,23 @@
 			path = RadioButton;
 			sourceTree = "<group>";
 		};
-		B60B931B22DF311500EC460B /* Views */ = {
+		B60B933122DF32FA00EC460B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				B60B931C22DF311500EC460B /* ESSDynamicForm.swift */,
-				B60B931D22DF311500EC460B /* ScrollableStackView.swift */,
+				B60B933B22DF33B800EC460B /* ImagePicker.swift */,
+				B60B933822DF339800EC460B /* TypeEnum.swift */,
+				B60B933722DF339800EC460B /* UIColorExtension.swift */,
 			);
-			name = Views;
-			path = ../../../ESSDynamicForm/ESSDynamicForm/ESSDynamicFormSources/Views;
+			path = Utils;
 			sourceTree = "<group>";
 		};
-		B60B931E22DF311500EC460B /* Utils */ = {
+		B60B933222DF333500EC460B /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B60B931F22DF311500EC460B /* UIColorExtension.swift */,
-				B60B932022DF311500EC460B /* ImagePicker.swift */,
-				B60B932122DF311500EC460B /* TypeEnum.swift */,
+				B60B933422DF339300EC460B /* ESSDynamicForm.swift */,
+				B60B933322DF339300EC460B /* ScrollableStackView.swift */,
 			);
-			name = Utils;
-			path = ../../../ESSDynamicForm/ESSDynamicForm/ESSDynamicFormSources/Utils;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		B6DB7E2322D728DF00A4BF26 = {
@@ -180,11 +178,11 @@
 		B6DB7E6722D73C4900A4BF26 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				B60B933222DF333500EC460B /* Views */,
+				B60B933122DF32FA00EC460B /* Utils */,
 				B60B931422DF311500EC460B /* Components */,
 				B60B930F22DF311500EC460B /* Models */,
 				B60B930D22DF311500EC460B /* protocol */,
-				B60B931E22DF311500EC460B /* Utils */,
-				B60B931B22DF311500EC460B /* Views */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -298,20 +296,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B60B932D22DF311500EC460B /* ScrollableStackView.swift in Sources */,
+				B60B933A22DF339800EC460B /* TypeEnum.swift in Sources */,
 				B60B932322DF311500EC460B /* ElementsForm.swift in Sources */,
 				B60B932222DF311500EC460B /* ESSDynamicFormDelegate.swift in Sources */,
-				B60B932F22DF311500EC460B /* ImagePicker.swift in Sources */,
 				B60B932722DF311500EC460B /* OnoffRadioButtonController.swift in Sources */,
+				B60B933622DF339300EC460B /* ESSDynamicForm.swift in Sources */,
 				B60B932822DF311500EC460B /* OnoffRadioButtonControllerDelegate.swift in Sources */,
 				B60B932922DF311500EC460B /* OnoffRadioButton.swift in Sources */,
-				B60B932E22DF311500EC460B /* UIColorExtension.swift in Sources */,
-				B60B933022DF311500EC460B /* TypeEnum.swift in Sources */,
+				B60B933922DF339800EC460B /* UIColorExtension.swift in Sources */,
 				B60B932522DF311500EC460B /* Field.swift in Sources */,
 				B60B932622DF311500EC460B /* FormResponse.swift in Sources */,
 				B60B932B22DF311500EC460B /* ESSTextView.swift in Sources */,
-				B60B932C22DF311500EC460B /* ESSDynamicForm.swift in Sources */,
 				B60B932A22DF311500EC460B /* ESSTextField.swift in Sources */,
+				B60B933C22DF33B800EC460B /* ImagePicker.swift in Sources */,
+				B60B933522DF339300EC460B /* ScrollableStackView.swift in Sources */,
 				B60B932422DF311500EC460B /* FormElement.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
