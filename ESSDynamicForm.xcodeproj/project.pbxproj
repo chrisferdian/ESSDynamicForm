@@ -22,6 +22,7 @@
 		B60B933922DF339800EC460B /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B933722DF339800EC460B /* UIColorExtension.swift */; };
 		B60B933A22DF339800EC460B /* TypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B933822DF339800EC460B /* TypeEnum.swift */; };
 		B60B933C22DF33B800EC460B /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B933B22DF33B800EC460B /* ImagePicker.swift */; };
+		B60B934222E07E6E00EC460B /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B60B934122E07E6E00EC460B /* Media.xcassets */; };
 		B6DB7E3722D728DF00A4BF26 /* ESSDynamicForm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6DB7E2D22D728DF00A4BF26 /* ESSDynamicForm.framework */; };
 		B6DB7E3C22D728DF00A4BF26 /* ESSDynamicFormTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DB7E3B22D728DF00A4BF26 /* ESSDynamicFormTests.swift */; };
 		B6DB7E3E22D728DF00A4BF26 /* ESSDynamicForm.h in Headers */ = {isa = PBXBuildFile; fileRef = B6DB7E3022D728DF00A4BF26 /* ESSDynamicForm.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -53,6 +54,7 @@
 		B60B933722DF339800EC460B /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		B60B933822DF339800EC460B /* TypeEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeEnum.swift; sourceTree = "<group>"; };
 		B60B933B22DF33B800EC460B /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		B60B934122E07E6E00EC460B /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		B6DB7E2D22D728DF00A4BF26 /* ESSDynamicForm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ESSDynamicForm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6DB7E3022D728DF00A4BF26 /* ESSDynamicForm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESSDynamicForm.h; sourceTree = "<group>"; };
 		B6DB7E3122D728DF00A4BF26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				B6DB7E6722D73C4900A4BF26 /* Sources */,
 				B6DB7E3022D728DF00A4BF26 /* ESSDynamicForm.h */,
 				B6DB7E3122D728DF00A4BF26 /* Info.plist */,
+				B60B934122E07E6E00EC460B /* Media.xcassets */,
 			);
 			path = ESSDynamicForm;
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B60B934222E07E6E00EC460B /* Media.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

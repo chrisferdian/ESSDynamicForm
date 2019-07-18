@@ -55,7 +55,7 @@ class OnoffRadioButtonController: NSObject {
             iteratingButton = aButton
         }
         if(iteratingButton != nil) {
-            buttonsArray.remove(at: buttonsArray.index(of: iteratingButton!)!)
+            buttonsArray.remove(at: buttonsArray.firstIndex(of: iteratingButton!)!)
             iteratingButton!.removeTarget(self, action: #selector(OnoffRadioButtonController.pressed(_:)), for: .touchUpInside)
             iteratingButton!.isSelected = false
         }
@@ -98,7 +98,7 @@ class OnoffRadioButtonController: NSObject {
      - returns: Currenlty selected button.
      */
     func selectedButton() -> UIButton? {
-        guard let index = buttonsArray.index(where: { button in button.isSelected }) else { return nil }
+        guard let index = buttonsArray.firstIndex(where: { button in button.isSelected }) else { return nil }
         
         return buttonsArray[index]
     }
