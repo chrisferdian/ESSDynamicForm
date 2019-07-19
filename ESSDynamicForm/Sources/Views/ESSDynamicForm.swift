@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class ESSDynamicForm: UIView {
+public class ESSDynamicForm: UIView {
 
     public lazy var scrollable: ScrollableStackView = {
         let instance = ScrollableStackView(frame: CGRect.zero)
@@ -46,7 +46,7 @@ open class ESSDynamicForm: UIView {
         self.vc = viewController
     }
     
-    func setElements(with elements:FormElement) {
+    public func setElements(with elements:FormElement) {
         self.elements = elements.elementsForm!
     }
     
@@ -70,7 +70,7 @@ open class ESSDynamicForm: UIView {
         scrollable.stackView.alignment = .center
         scrollable.scrollView.layoutMargins = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
     }
-    func build() {
+    public func build() {
         self.imagePicker = ImagePicker(presentationController: vc, delegate: self)
         for i in elements {
             let min:UInt32 = 30

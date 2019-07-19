@@ -9,7 +9,7 @@
 import Foundation
 
 // MARK: - FormElement
-class FormElement: Codable {
+public class FormElement: Codable {
     let formName, distributionChannelCode: String?
     let elementsForm: [ElementsForm]?
     
@@ -19,7 +19,7 @@ class FormElement: Codable {
         case elementsForm
     }
     
-    init(formName: String?, distributionChannelCode: String?, elementsForm: [ElementsForm]?) {
+    public init(formName: String?, distributionChannelCode: String?, elementsForm: [ElementsForm]?) {
         self.formName = formName
         self.distributionChannelCode = distributionChannelCode
         self.elementsForm = elementsForm

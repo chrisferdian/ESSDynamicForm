@@ -9,11 +9,17 @@
 import Foundation
 
 // MARK: - Field
-class Field: Codable {
+public struct Field: Codable {
     let placeholder, id: String?
     let type: TypeEnum?
     
-    init(type: TypeEnum?, placeholder: String?, id: String?) {
+    enum CodingKeys: String, CodingKey {
+        case placeholder
+        case id
+        case type
+    }
+    
+    public init(type: TypeEnum?, placeholder: String?, id: String?) {
         self.type = type
         self.placeholder = placeholder
         self.id = id

@@ -9,10 +9,10 @@
 import Foundation
 
 // MARK: - ElementsForm
-class ElementsForm: Codable {
+public class ElementsForm: Codable {
     let fields: [Field]?
     
-    init(fields: [Field]?) {
+    public init(fields: [Field]?) {
         self.fields = fields
     }
 }

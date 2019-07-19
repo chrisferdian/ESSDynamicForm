@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum TypeEnum:String, Codable {
+public enum TypeEnum:String, Codable {
     case fieldText = "fieldText"
     case fieldNumber = "fieldNumber"
     case pickerImage = "pickerImage"
