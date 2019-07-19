@@ -1,6 +1,9 @@
 # ESSDynamicForm
 
-Creating form as easy as calling API.
+# Creating form as easy as calling API.
+
+[![License](https://img.shields.io/cocoapods/l/ESSDynamicForm.svg?style=plastic)]()
+[![Build Status](https://img.shields.io/badge/pod-0.2.0-orange.svg)]()
 
 ## Getting Started
 
