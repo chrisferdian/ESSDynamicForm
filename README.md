@@ -45,8 +45,8 @@ Programmatically
 ```python
 let essForm = ESSDynamicForm(with: self, frame: view.frame, delegate: self)
 
-forms.setElements(with: formElementElements)
-forms.build()
+essForm.setElements(with: formElementElements)
+essForm.build()
 ```
 
 Storyboard
