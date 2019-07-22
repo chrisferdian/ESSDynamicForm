@@ -3,7 +3,7 @@
 # Creating form as easy as calling API.
 
 [![License](https://img.shields.io/cocoapods/l/ESSDynamicForm.svg?style=plastic)]()
-[![Build Status](https://travis-ci.org/chrisferdian/ESSDynamicForm.svg?branch=master)]()
+[![Build Status](https://travis-ci.org/chrisferdian/ESSDynamicForm.svg?branch=master)](https://travis-ci.org/chrisferdian/ESSDynamicForm)
 
 ## Getting Started
 
