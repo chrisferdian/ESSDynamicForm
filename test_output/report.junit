@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites name='ESSDynamicFormTests.xctest' tests='2' failures='0'>
+  <testsuite name='ESSDynamicFormTests.ESSDynamicFormTests' tests='2' failures='0'>
+    <testcase classname='ESSDynamicFormTests.ESSDynamicFormTests' name='testLoadStaticForm' time='1.012'/>
+    <testcase classname='ESSDynamicFormTests.ESSDynamicFormTests' name='testPerformanceExample' time='0.443'/>
+  </testsuite>
+</testsuites>

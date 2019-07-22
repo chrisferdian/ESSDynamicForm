@@ -8,7 +8,7 @@ s.summary = "ESSDynamicForm lets a user create form as easy as calling api."
 s.requires_arc = true
 
 # 2
-s.version = "0.2.0"
+s.version = "0.2.1"
 
 # 3
 s.license = { :type => "MIT", :file => "LICENSE" }
@@ -33,6 +33,6 @@ s.source_files = "ESSDynamicForm/**/*.{swift}"
 #s.resources = "ESSDynamicForm/**/*.{png,jpeg,jpg,storyboard,xib,xcassets}"
 
 # 10
-s.swift_version = "5.0"
+s.swift_version = "4.2"
 
 end
