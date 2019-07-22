@@ -9,6 +9,7 @@ script:
   - set -o pipefail
   - xcodebuild -version
   - xcodebuild -showsdks
+  - xcodebuild test -project ESSDynamicForm.xcodeproj -scheme ESSDynamicForm -destination "platform=iOS Simulator,name=iPhone X" -sdk iphonesimulator12.2 CODE_SIGNING_REQUIRED=NO
 
   # Run `pod lib lint` if specified
   - if [ $POD_LINT == "YES" ]; then
