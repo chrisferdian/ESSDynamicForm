@@ -1,15 +1,15 @@
 
 language: objective-c  #1
-osx_image: xcode10.2.1 #2
+osx_image: xcode10.2 #2
 xcode_project: ESSDynamicForm.xcodeproj #3
 xcode_scheme: ESSDynamicForm #4
 xcode_sdk: iphonesimulator12.2 #5
+xcode_destination: platform=iOS Simulator,OS=12.2,name=iPhone Xs
 
 script:
   - set -o pipefail
   - xcodebuild -version
   - xcodebuild -showsdks
-  - xcodebuild test -project ESSDynamicForm.xcodeproj -scheme ESSDynamicForm -destination "platform=iOS Simulator,name=iPhone X" -sdk iphonesimulator12.2 CODE_SIGNING_REQUIRED=NO
   - xctool -sdk iphonesimulator -workspace Example/ESSDynamicForm.xcworkspace -scheme ESSDynamicForm build test
   # Run `pod lib lint` if specified
   - if [ $POD_LINT == "YES" ]; then
