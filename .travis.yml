@@ -10,8 +10,12 @@ script:
   - xcodebuild -version
   - xcodebuild -showsdks
   - xcodebuild test -project ESSDynamicForm.xcodeproj -scheme ESSDynamicForm -destination "platform=iOS Simulator,name=iPhone X" -sdk iphonesimulator12.2 CODE_SIGNING_REQUIRED=NO
-
+  - xctool -sdk iphonesimulator -workspace Example/ESSDynamicForm.xcworkspace -scheme ESSDynamicForm build test
   # Run `pod lib lint` if specified
   - if [ $POD_LINT == "YES" ]; then
       pod lib lint;
     fi
+
+before_install:
+  - brew update
+  - brew uninstall xctool && brew install --HEAD xctool
