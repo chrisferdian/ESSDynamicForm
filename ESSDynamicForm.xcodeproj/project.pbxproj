@@ -23,6 +23,7 @@
 		B60B933A22DF339800EC460B /* TypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B933822DF339800EC460B /* TypeEnum.swift */; };
 		B60B933C22DF33B800EC460B /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B933B22DF33B800EC460B /* ImagePicker.swift */; };
 		B60B934222E07E6E00EC460B /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B60B934122E07E6E00EC460B /* Media.xcassets */; };
+		B66DD60E22E567E0005721DC /* DummyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66DD60D22E567E0005721DC /* DummyViewController.swift */; };
 		B6DB7E3722D728DF00A4BF26 /* ESSDynamicForm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6DB7E2D22D728DF00A4BF26 /* ESSDynamicForm.framework */; };
 		B6DB7E3C22D728DF00A4BF26 /* ESSDynamicFormTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DB7E3B22D728DF00A4BF26 /* ESSDynamicFormTests.swift */; };
 		B6DB7E3E22D728DF00A4BF26 /* ESSDynamicForm.h in Headers */ = {isa = PBXBuildFile; fileRef = B6DB7E3022D728DF00A4BF26 /* ESSDynamicForm.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -55,6 +56,7 @@
 		B60B933822DF339800EC460B /* TypeEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeEnum.swift; sourceTree = "<group>"; };
 		B60B933B22DF33B800EC460B /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		B60B934122E07E6E00EC460B /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		B66DD60D22E567E0005721DC /* DummyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyViewController.swift; sourceTree = "<group>"; };
 		B6DB7E2D22D728DF00A4BF26 /* ESSDynamicForm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ESSDynamicForm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6DB7E3022D728DF00A4BF26 /* ESSDynamicForm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESSDynamicForm.h; sourceTree = "<group>"; };
 		B6DB7E3122D728DF00A4BF26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 			children = (
 				B6DB7E3B22D728DF00A4BF26 /* ESSDynamicFormTests.swift */,
 				B6DB7E3D22D728DF00A4BF26 /* Info.plist */,
+				B66DD60D22E567E0005721DC /* DummyViewController.swift */,
 			);
 			path = ESSDynamicFormTests;
 			sourceTree = "<group>";
@@ -323,6 +326,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6DB7E3C22D728DF00A4BF26 /* ESSDynamicFormTests.swift in Sources */,
+				B66DD60E22E567E0005721DC /* DummyViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,7 +393,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -447,7 +451,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -472,6 +476,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = ESSDynamicForm/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -499,6 +504,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = ESSDynamicForm/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

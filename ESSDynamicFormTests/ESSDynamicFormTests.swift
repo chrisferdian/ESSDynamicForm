@@ -11,17 +11,33 @@ import XCTest
 
 class ESSDynamicFormTests: XCTestCase {
 
+    var forms:ESSDynamicForm?
+    var dummyVC:DummyViewController?
+    var staticFields = [ElementsForm]()
+
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        dummyVC = DummyViewController()
+        forms = ESSDynamicForm(with: dummyVC!, frame: .init(x: 0, y: 0, width: 375, height: 400), margin: 16, delegate: dummyVC!)
     }
 
+    func testLoadStaticForm() {
+        //create static form eelements
+        let fieldName = Field(type: .fieldText, placeholder: "First Name", id: "firstName")
+        let lastName = Field(type: .fieldText, placeholder: "Last Name", id: "firstName")
+        let elementGroup1 = ElementsForm(fields: [fieldName, lastName])
+        staticFields.append(elementGroup1)
+        let address = Field(type: .fieldNumber, placeholder: "Address", id: "Address")
+        let elementGroup2 = ElementsForm(fields: [address])
+        staticFields.append(elementGroup2)
+        
+        let fe = FormElement(formName: "forms", distributionChannelCode: "xxx", elementsForm: staticFields)
+        forms!.setElements(with: fe)
+        forms!.setViewController(with: dummyVC!)
+        forms!.build()
+    }
+    
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        dummyVC = nil
     }
 
     func testPerformanceExample() {
@@ -32,3 +48,4 @@ class ESSDynamicFormTests: XCTestCase {
     }
 
 }
+
