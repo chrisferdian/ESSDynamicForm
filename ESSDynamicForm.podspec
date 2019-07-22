@@ -2,9 +2,9 @@ Pod::Spec.new do |s|
 
 # 1
 s.platform = :ios
-s.ios.deployment_target = '12.0'
+s.ios.deployment_target = '9.0'
 s.name = "ESSDynamicForm"
-s.summary = "ESSDynamicForm lets a user create form as easy as calling api."
+s.summary = "ESSDynamicForm let a user create form as easy as calling api."
 s.requires_arc = true
 
 # 2
