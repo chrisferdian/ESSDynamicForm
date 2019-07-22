@@ -34,7 +34,7 @@ platform :ios, '9.0'
 use_frameworks!
 
 target 'ESSDynamicForm' do
-    pod 'ESSDynamicForm', '~> 1.0'
+    pod 'ESSDynamicForm', '~> 0.2.0'
 end
 ```
 
