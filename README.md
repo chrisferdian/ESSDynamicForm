@@ -3,7 +3,7 @@
 # Creating form as easy as calling API.
 
 [![License](https://img.shields.io/cocoapods/l/ESSDynamicForm.svg?style=plastic)]()
-[![Build Status](https://travis-ci.org/chrisferdian/ESSDynamicForm.svg?branch=master)]()
+[![Build Status](https://travis-ci.org/chrisferdian/ESSDynamicForm.svg?branch=master)](https://travis-ci.org/chrisferdian/ESSDynamicForm)
 
 ## Getting Started
 
@@ -34,7 +34,7 @@ platform :ios, '9.0'
 use_frameworks!
 
 target 'ESSDynamicForm' do
-    pod 'ESSDynamicForm', '~> 1.0'
+    pod 'ESSDynamicForm', '~> 0.2.0'
 end
 ```
 
