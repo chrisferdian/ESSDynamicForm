@@ -13,9 +13,6 @@
 		B60B932422DF311500EC460B /* FormElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B931122DF311500EC460B /* FormElement.swift */; };
 		B60B932522DF311500EC460B /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B931222DF311500EC460B /* Field.swift */; };
 		B60B932622DF311500EC460B /* FormResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B931322DF311500EC460B /* FormResponse.swift */; };
-		B60B932722DF311500EC460B /* OnoffRadioButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B931622DF311500EC460B /* OnoffRadioButtonController.swift */; };
-		B60B932822DF311500EC460B /* OnoffRadioButtonControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B931722DF311500EC460B /* OnoffRadioButtonControllerDelegate.swift */; };
-		B60B932922DF311500EC460B /* OnoffRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B931822DF311500EC460B /* OnoffRadioButton.swift */; };
 		B60B932A22DF311500EC460B /* ESSTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B931922DF311500EC460B /* ESSTextField.swift */; };
 		B60B932B22DF311500EC460B /* ESSTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B931A22DF311500EC460B /* ESSTextView.swift */; };
 		B60B933522DF339300EC460B /* ScrollableStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B933322DF339300EC460B /* ScrollableStackView.swift */; };
@@ -47,9 +44,6 @@
 		B60B931122DF311500EC460B /* FormElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormElement.swift; sourceTree = "<group>"; };
 		B60B931222DF311500EC460B /* Field.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
 		B60B931322DF311500EC460B /* FormResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormResponse.swift; sourceTree = "<group>"; };
-		B60B931622DF311500EC460B /* OnoffRadioButtonController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnoffRadioButtonController.swift; sourceTree = "<group>"; };
-		B60B931722DF311500EC460B /* OnoffRadioButtonControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnoffRadioButtonControllerDelegate.swift; sourceTree = "<group>"; };
-		B60B931822DF311500EC460B /* OnoffRadioButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnoffRadioButton.swift; sourceTree = "<group>"; };
 		B60B931922DF311500EC460B /* ESSTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ESSTextField.swift; sourceTree = "<group>"; };
 		B60B931A22DF311500EC460B /* ESSTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ESSTextView.swift; sourceTree = "<group>"; };
 		B60B933322DF339300EC460B /* ScrollableStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollableStackView.swift; sourceTree = "<group>"; };
@@ -109,21 +103,10 @@
 		B60B931422DF311500EC460B /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				B60B931522DF311500EC460B /* RadioButton */,
 				B60B931922DF311500EC460B /* ESSTextField.swift */,
 				B60B931A22DF311500EC460B /* ESSTextView.swift */,
 			);
 			path = Components;
-			sourceTree = "<group>";
-		};
-		B60B931522DF311500EC460B /* RadioButton */ = {
-			isa = PBXGroup;
-			children = (
-				B60B931622DF311500EC460B /* OnoffRadioButtonController.swift */,
-				B60B931722DF311500EC460B /* OnoffRadioButtonControllerDelegate.swift */,
-				B60B931822DF311500EC460B /* OnoffRadioButton.swift */,
-			);
-			path = RadioButton;
 			sourceTree = "<group>";
 		};
 		B60B933122DF32FA00EC460B /* Utils */ = {
@@ -331,10 +314,7 @@
 				B60B933A22DF339800EC460B /* TypeEnum.swift in Sources */,
 				B60B932322DF311500EC460B /* ElementsForm.swift in Sources */,
 				B60B932222DF311500EC460B /* ESSDynamicFormDelegate.swift in Sources */,
-				B60B932722DF311500EC460B /* OnoffRadioButtonController.swift in Sources */,
 				B60B933622DF339300EC460B /* ESSDynamicForm.swift in Sources */,
-				B60B932822DF311500EC460B /* OnoffRadioButtonControllerDelegate.swift in Sources */,
-				B60B932922DF311500EC460B /* OnoffRadioButton.swift in Sources */,
 				B60B933922DF339800EC460B /* UIColorExtension.swift in Sources */,
 				B60B932522DF311500EC460B /* Field.swift in Sources */,
 				B60B932622DF311500EC460B /* FormResponse.swift in Sources */,

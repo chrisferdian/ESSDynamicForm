@@ -1,6 +1,6 @@
 #ignore Pods Module
 Pods
 Podfile.lock
-
+Podfile
 DS_Store
 xcuserdata

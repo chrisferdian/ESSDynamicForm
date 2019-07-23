@@ -16,6 +16,7 @@ These instructions will get you a copy of the project up and running on your loc
     - text
 - ImagePicker
 - DatePicker
+- Segmented Control
 - UITextView
 
 ## Requirements
@@ -34,7 +35,7 @@ platform :ios, '9.0'
 use_frameworks!
 
 target 'ESSDynamicForm' do
-    pod 'ESSDynamicForm', '~> 0.2.0'
+    pod 'ESSDynamicForm', '~> 0.2.1'
 end
 ```
 
