@@ -9,7 +9,7 @@ import UIKit
  * This class is responsible to craete radio button.
  * @author    Chris Ferdian <chrisferdian@onoff.insure>
  */
-class OnoffRadioButton: UIButton {
+public class ESSRadioButton: UIButton {
     /**
      * Initialized layer for create circle shape
      */
@@ -18,16 +18,14 @@ class OnoffRadioButton: UIButton {
      * I nitialized layer for create fill circle shape
      */
     fileprivate var fillCircleLayer = CAShapeLayer()
-    
     /**
      * Bool property for getting radio state
      */
-    override var isSelected: Bool {
+    override public var isSelected: Bool {
         didSet {
             toggleButon()
         }
     }
-    
     /**
      Color of the radio button circle. Default value is UIColor red.
      */
@@ -37,7 +35,6 @@ class OnoffRadioButton: UIButton {
             self.toggleButon()
         }
     }
-    
     /**
      Color of the radio button stroke circle. Default value is UIColor red.
      */
@@ -47,7 +44,6 @@ class OnoffRadioButton: UIButton {
             self.toggleButon()
         }
     }
-    
     /**
      * Radius of RadioButton circle.
      */
@@ -61,7 +57,6 @@ class OnoffRadioButton: UIButton {
             layer.masksToBounds = newValue > 0
         }
     }
-    
     /**
      * Frame of circle
      */
@@ -71,7 +66,6 @@ class OnoffRadioButton: UIButton {
         circleFrame.origin.y = bounds.height/2 - circleFrame.height/2
         return circleFrame
     }
-    
     /**
      * prepare layer.
      */
@@ -79,7 +73,6 @@ class OnoffRadioButton: UIButton {
         super.init(coder: aDecoder)
         initialize()
     }
-    
     /**
      * prepare frame.
      */
@@ -87,7 +80,6 @@ class OnoffRadioButton: UIButton {
         super.init(frame: frame)
         initialize()
     }
-    
     /**
      * Prepare to customize layer.
      */
@@ -102,10 +94,11 @@ class OnoffRadioButton: UIButton {
         fillCircleLayer.fillColor = UIColor.clear.cgColor
         fillCircleLayer.strokeColor = UIColor.clear.cgColor
         layer.addSublayer(fillCircleLayer)
-        self.titleEdgeInsets = UIEdgeInsets(top:0, left:(2*circleRadius + 2*circleLayer.lineWidth), bottom:0, right:0)
+        self.titleEdgeInsets = UIEdgeInsets(
+            top: 0, left: (2*circleRadius + 2*circleLayer.lineWidth), bottom: 0, right: 0
+        )
         self.toggleButon()
     }
-    
     /**
      Toggles selected state of the button.
      */
@@ -118,37 +111,35 @@ class OnoffRadioButton: UIButton {
             circleLayer.strokeColor = strokeColor.cgColor
         }
     }
-    
     /**
      * Variable to create circle line
     */
     fileprivate func circlePath() -> UIBezierPath {
         return UIBezierPath(ovalIn: circleFrame())
     }
-    
     /**
      * Variable to create inside circle
      */
     fileprivate func fillCirclePath() -> UIBezierPath {
         return UIBezierPath(ovalIn: circleFrame().insetBy(dx: 2, dy: 2))
     }
-    
     /**
      * setup frame.
      */
-    override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
         circleLayer.frame = bounds
         circleLayer.path = circlePath().cgPath
         fillCircleLayer.frame = bounds
         fillCircleLayer.path = fillCirclePath().cgPath
-        self.titleEdgeInsets = UIEdgeInsets(top: 0, left: (2*circleRadius + 4*circleLayer.lineWidth), bottom: 0, right: 0)
+        self.titleEdgeInsets = UIEdgeInsets(
+            top: 0, left: (2*circleRadius + 4*circleLayer.lineWidth), bottom: 0, right: 0
+        )
     }
-    
     /**
      * prepare interface builder.
      */
-    override func prepareForInterfaceBuilder() {
+    override public func prepareForInterfaceBuilder() {
         initialize()
     }
 }

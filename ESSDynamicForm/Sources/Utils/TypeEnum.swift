@@ -8,10 +8,11 @@
 
 import Foundation
 
-public enum TypeEnum:String, Codable {
+public enum TypeEnum: String, Codable {
     case fieldText = "fieldText"
     case fieldNumber = "fieldNumber"
     case pickerImage = "pickerImage"
     case fieldDate = "fieldDate"
     case textView = "textView"
+    case radioGroup = "radio"
 }

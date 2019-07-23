@@ -12,13 +12,11 @@ import Foundation
 public class FormElement: Codable {
     let formName, distributionChannelCode: String?
     let elementsForm: [ElementsForm]?
-    
     enum CodingKeys: String, CodingKey {
         case formName
         case distributionChannelCode
         case elementsForm
     }
-    
     public init(formName: String?, distributionChannelCode: String?, elementsForm: [ElementsForm]?) {
         self.formName = formName
         self.distributionChannelCode = distributionChannelCode

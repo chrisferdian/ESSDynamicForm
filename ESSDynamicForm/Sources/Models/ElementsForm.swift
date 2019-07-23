@@ -11,7 +11,6 @@ import Foundation
 // MARK: - ElementsForm
 public class ElementsForm: Codable {
     let fields: [Field]?
-    
     public init(fields: [Field]?) {
         self.fields = fields
     }

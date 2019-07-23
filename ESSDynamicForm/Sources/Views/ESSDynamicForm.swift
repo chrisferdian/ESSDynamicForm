@@ -14,110 +14,117 @@ public class ESSDynamicForm: UIView {
         let instance = ScrollableStackView(frame: CGRect.zero)
         instance.translatesAutoresizingMaskIntoConstraints = false
         instance.layoutMargins = .zero
+
         return instance
     }()
     private var elements = [ElementsForm]()
     private var imagePicker: ImagePicker!
     let datePicker = UIDatePicker()
-    private var currentImageViewIdentifire:String = ""
-    private var vc:UIViewController!
-    
-    var delegate: ESSDynamicFormDelegate?
-    public var margin:CGFloat = 16
-    
+    private var currentImageViewIdentifire: String = ""
+    private var hostVC: UIViewController!
+    weak var delegate: ESSDynamicFormDelegate?
+    public var margin: CGFloat = 16
     //Use this init for programmatically implementation
-    init(with mainController:UIViewController, frame:CGRect, margin:CGFloat = 16, delegate:ESSDynamicFormDelegate) {
+    init(with mainController: UIViewController, frame: CGRect, margin: CGFloat = 16, delegate: ESSDynamicFormDelegate) {
         self.init()
-        self.vc = mainController
+        self.hostVC = mainController
         self.frame = frame
-        imagePicker = ImagePicker(presentationController: vc, delegate: self)
+        imagePicker = ImagePicker(presentationController: hostVC, delegate: self)
         setupScrollable()
     }
-    
     public override init(frame: CGRect) {
         super.init(frame: frame)
         scrollable.frame = frame
         setupScrollable()
     }
-    
     public required init?(coder aDecoder: NSCoder) {super.init(coder: aDecoder)}
-    
-    public func setViewController(with viewController:UIViewController) {
-        self.vc = viewController
+    public func setViewController(with viewController: UIViewController) {
+        self.hostVC = viewController
     }
-    
-    public func setElements(with elements:FormElement) {
+    public func setElements(with elements: FormElement) {
         self.elements = elements.elementsForm!
     }
-    
     open override func awakeFromNib() {
         super.awakeFromNib()
         setupScrollable()
     }
-    
     private func setupScrollable() {
         scrollable.frame = frame
         addSubview(scrollable)
         scrollable.translatesAutoresizingMaskIntoConstraints = false
         datePicker.datePickerMode = .date
-        
+        //Setup scrollable constraint
         scrollable.topAnchor.constraint(equalTo: topAnchor, constant: margin).isActive = true
         scrollable.leadingAnchor.constraint(equalTo: leadingAnchor, constant: margin).isActive = true
         scrollable.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -margin).isActive = true
         scrollable.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -margin).isActive = true
         scrollable.frame = frame
+        scrollable.backgroundColor = .clear
+        scrollable.stackView.backgroundColor = .clear
         scrollable.stackView.distribution = .fillProportionally
         scrollable.stackView.alignment = .center
         scrollable.scrollView.layoutMargins = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
     }
     public func build() {
-        self.imagePicker = ImagePicker(presentationController: vc, delegate: self)
-        for i in elements {
-            let min:UInt32 = 30
-            let max:UInt32 = UInt32(bounds.width - 10)
-            let random = CGFloat(arc4random_uniform(max - min) + min) // between 30-130
-            let rectangle = UIView(frame: CGRect(x: 0, y: 0, width: random, height: random))
-            rectangle.backgroundColor = UIColor(red: CGFloat(drand48()), green: CGFloat(drand48()), blue: CGFloat(drand48()), alpha: 1.0)
-            if i.fields!.count > 1 {
-                let horizontalStack = UIStackView(frame: .zero)
-                horizontalStack.axis = .horizontal
-                horizontalStack.distribution = .fillEqually
-                horizontalStack.spacing = margin
-                for element in i.fields! {
-                    guard let placeholder = element.placeholder else { return }
-                    guard let identifire = element.id else { return }
-                    if (element.type == TypeEnum.fieldText) {
-                        self.addTextField(with: placeholder, identifire: identifire, inputType: .default, stackview: horizontalStack, fieldInputView: nil)
-                    } else if (element.type == TypeEnum.fieldNumber) {
-                        self.addTextField(with: placeholder, identifire: identifire, inputType: .numberPad, stackview: horizontalStack, fieldInputView: nil)
-                    } else if (element.type == TypeEnum.pickerImage) {
-                        self.addImageView(with: UIImage(named: "")!, identifier: identifire, stackview: horizontalStack)
-                    } else if (element.type == TypeEnum.fieldDate) {
-                        self.addTextField(with: placeholder, identifire: identifire, inputType: .default, stackview: horizontalStack, fieldInputView: datePicker)
-                    }
-                }
-                scrollable.stackView.addArrangedSubview(horizontalStack)
+        self.imagePicker = ImagePicker(presentationController: hostVC, delegate: self)
+        for tmpElement in elements {
+            if tmpElement.fields!.count > 1 {
+                addMultipleElement(fields: tmpElement.fields!)
             } else {
-                for element in i.fields! {
-                    guard let placeholder = element.placeholder else { return }
-                    guard let identifire = element.id else { return }
-                    if (element.type == TypeEnum.fieldText) {
-                        self.addTextField(with: placeholder, identifire: identifire, inputType: .default, stackview: nil, fieldInputView: nil)
-                    } else if (element.type == TypeEnum.fieldNumber) {
-                        self.addTextField(with: placeholder, identifire: identifire, inputType: .numberPad, stackview: nil, fieldInputView: nil)
-                    } else if (element.type == TypeEnum.pickerImage) {
-                        self.addImageView(with: UIImage(named: "")!, identifier: identifire, stackview: nil)
-                    } else if (element.type == TypeEnum.fieldText) {
-                        self.addTextField(with: placeholder, identifire: identifire, inputType: .default, stackview: nil, fieldInputView: datePicker)
-                    }
-                }
+                addSingleElement(fields: tmpElement.fields!)
             }
         }
         DispatchQueue.main.async {
             self.scrollable.stackView.addHorizontalSeparators(color: .gray)
         }
     }
-    internal func addImageView(with placeholder:UIImage, identifier:String, stackview:UIStackView?) {
+    private func addMultipleElement(fields: [Field]) {
+        let horizontalStack = UIStackView(frame: .zero)
+        horizontalStack.axis = .horizontal
+        horizontalStack.distribution = .fillEqually
+        horizontalStack.spacing = margin
+        for element in fields {
+            guard let placeholder = element.placeholder else { return }
+            guard let identifire = element.id else { return }
+            if element.type == TypeEnum.fieldText {
+                self.addTextField(with: placeholder, identifire: identifire,
+                                  inputType: .default, stackview: horizontalStack, fieldInputView: nil)
+            } else if element.type == TypeEnum.fieldNumber {
+                self.addTextField(with: placeholder, identifire: identifire,
+                                  inputType: .numberPad, stackview: horizontalStack, fieldInputView: nil)
+            } else if element.type == TypeEnum.pickerImage {
+                self.addImageView(with: UIImage(named: "")!, identifier: identifire,
+                                  stackview: horizontalStack)
+            } else if element.type == TypeEnum.fieldDate {
+                self.addTextField(with: placeholder, identifire: identifire,
+                                  inputType: .default, stackview: horizontalStack, fieldInputView: datePicker)
+            }
+        }
+        scrollable.stackView.addArrangedSubview(horizontalStack)
+    }
+    private func addSingleElement(fields: [Field]) {
+        for element in fields {
+            guard let placeholder = element.placeholder else { return }
+            guard let identifire = element.id else { return }
+            if element.type == TypeEnum.fieldText {
+                self.addTextField(with: placeholder, identifire: identifire,
+                                  inputType: .default, stackview: nil, fieldInputView: nil)
+            } else if element.type == TypeEnum.fieldNumber {
+                self.addTextField(with: placeholder, identifire: identifire,
+                                  inputType: .numberPad, stackview: nil, fieldInputView: nil)
+            } else if element.type == TypeEnum.pickerImage {
+                self.addImageView(with: UIImage(named: "")!, identifier: identifire,
+                                  stackview: nil)
+            } else if element.type == TypeEnum.fieldText {
+                self.addTextField(with: placeholder, identifire: identifire,
+                                  inputType: .default, stackview: nil, fieldInputView: datePicker)
+            } else if element.type == TypeEnum.radioGroup {
+                self.addRadioGroup(with: placeholder, identifire: identifire,
+                                   stackView: nil, options: element.option ?? [Option]())
+            }
+        }
+    }
+    internal func addImageView(with placeholder: UIImage, identifier: String, stackview: UIStackView?) {
         let imageVContainer = UIImageView(frame: .zero)
         imageVContainer.heightAnchor.constraint(equalToConstant: 275).isActive = true
         imageVContainer.widthAnchor.constraint(equalToConstant: scrollable.frame.width).isActive = true
@@ -131,9 +138,13 @@ public class ESSDynamicForm: UIView {
         imageVContainer.isUserInteractionEnabled = true
         imageVContainer.accessibilityIdentifier = identifier
         imageVContainer.clipsToBounds = true
-        imageVContainer.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(ESSDynamicForm.imagePickerTapped(sender:))))
+        imageVContainer.addGestureRecognizer(
+            UITapGestureRecognizer.init(target: self,
+                                        action: #selector(ESSDynamicForm.imagePickerTapped(sender:)))
+        )
     }
-    internal func addTextField(with placeholder:String, identifire:String, inputType:UIKeyboardType, stackview:UIStackView?, fieldInputView:UIView?) {
+    internal func addTextField(with placeholder: String, identifire: String,
+                               inputType: UIKeyboardType, stackview: UIStackView?, fieldInputView: UIView?) {
         let textfield = UITextField(frame: .zero)
         textfield.accessibilityIdentifier = identifire
         textfield.placeholder = placeholder
@@ -146,17 +157,13 @@ public class ESSDynamicForm: UIView {
             let popOverContent = UIViewController()
             popVIew.addSubview(datePicker)
             popOverContent.view = popVIew
-            
             popOverContent.modalPresentationStyle = .popover
             if let popoverController = popOverContent.popoverPresentationController {
                 popoverController.sourceView = textfield
                 popoverController.sourceRect = textfield.bounds
                 popoverController.permittedArrowDirections = .any
-//                popoverController.delegate = self
             }
-            vc.present(popOverContent, animated: true, completion: nil)
-//            presentViewController(savingsInformationViewController, animated: true, completion: nil)
-            
+            hostVC.present(popOverContent, animated: true, completion: nil)
         }
         if stackview != nil {
             stackview?.addArrangedSubview(textfield)
@@ -164,27 +171,46 @@ public class ESSDynamicForm: UIView {
             scrollable.stackView.addArrangedSubview(textfield)
         }
     }
+    internal func addRadioGroup(with placeholder: String, identifire: String,
+                                stackView: UIStackView?, options: [Option]) {
+        let segmented = UISegmentedControl(frame: .zero)
+        segmented.accessibilityIdentifier = identifire
+        segmented.translatesAutoresizingMaskIntoConstraints = false
+        segmented.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        DispatchQueue.main.async {
+            self.scrollable.stackView.addArrangedSubview(segmented)
+            segmented.widthAnchor.constraint(equalTo: self.scrollable.stackView.widthAnchor).isActive = true
+            for numberOption in 0...options.count - 1 {
+                segmented.insertSegment(withTitle: options[numberOption].label!, at: numberOption, animated: true)
+            }
+            segmented.layer.borderColor = UIColor.blue.cgColor
+            segmented.layer.borderWidth = 0.75
+            segmented.layer.cornerRadius = segmented.bounds.height / 2
+            segmented.layer.masksToBounds = true
+        }
+    }
     @objc func imagePickerTapped(sender: UITapGestureRecognizer) {
         currentImageViewIdentifire = sender.view!.accessibilityIdentifier!
-        for i in scrollable.stackView.arrangedSubviews {
-            if let iv = i as? UIImageView {
-                if (iv.accessibilityIdentifier?.elementsEqual(currentImageViewIdentifire))! {
-                    self.imagePicker.present(from: iv)
+        for viewFromStack in scrollable.stackView.arrangedSubviews {
+            if let imageV = viewFromStack as? UIImageView {
+                if (imageV.accessibilityIdentifier?.elementsEqual(currentImageViewIdentifire))! {
+                    self.imagePicker.present(from: imageV)
                 }
             }
         }
     }
     public func getFormData() {
         var response = [FormResponse]()
-        for i in scrollable.stackView.arrangedSubviews {
-            if let field = i as? UITextField {
+        for viewFromStack in scrollable.stackView.arrangedSubviews {
+            if let field = viewFromStack as? UITextField {
                 let res = FormResponse(key: field.accessibilityIdentifier ?? "", value: field.text ?? "")
                 response.append(res)
             }
-            if let stack = i as? UIStackView {
-                for x in stack.arrangedSubviews {
-                    if let tf = x as? UITextField {
-                        let res = FormResponse(key: tf.accessibilityIdentifier ?? "", value: tf.text ?? "")
+            if let stack = viewFromStack as? UIStackView {
+                for viewFromHorizontal in stack.arrangedSubviews {
+                    if let textField = viewFromHorizontal as? UITextField {
+                        let res = FormResponse(key: textField.accessibilityIdentifier ?? "",
+                                               value: textField.text ?? "")
                         response.append(res)
                     }
                 }
@@ -194,18 +220,16 @@ public class ESSDynamicForm: UIView {
             self.delegate?.formResponse(form: self, didFinishFormWithData: response)
         }
     }
-    
     @IBAction func jumpToViewAction(_ sender: Any) {
         scrollable.scrollToItem(index: 11)
     }
 }
 extension ESSDynamicForm: ImagePickerDelegate {
-    
     public func didSelect(image: UIImage?) {
-        for i in scrollable.stackView.arrangedSubviews {
-            if let iv = i as? UIImageView {
-                if (iv.accessibilityIdentifier?.elementsEqual(currentImageViewIdentifire))! {
-                    iv.image = image
+        for viewFromStack in scrollable.stackView.arrangedSubviews {
+            if let imageV = viewFromStack as? UIImageView {
+                if (imageV.accessibilityIdentifier?.elementsEqual(currentImageViewIdentifire))! {
+                    imageV.image = image
                 }
             }
         }

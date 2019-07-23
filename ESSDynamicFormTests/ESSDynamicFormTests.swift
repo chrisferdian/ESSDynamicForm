@@ -11,13 +11,14 @@ import XCTest
 
 class ESSDynamicFormTests: XCTestCase {
 
-    var forms:ESSDynamicForm?
-    var dummyVC:DummyViewController?
+    var forms: ESSDynamicForm?
+    var dummyVC: DummyViewController?
     var staticFields = [ElementsForm]()
 
     override func setUp() {
         dummyVC = DummyViewController()
-        forms = ESSDynamicForm(with: dummyVC!, frame: .init(x: 0, y: 0, width: 375, height: 400), margin: 16, delegate: dummyVC!)
+        forms = ESSDynamicForm(with: dummyVC!, frame: .init(x: 0, y: 0,
+                                                            width: 375, height: 400), margin: 16, delegate: dummyVC!)
     }
 
     func testLoadStaticForm() {
@@ -29,15 +30,18 @@ class ESSDynamicFormTests: XCTestCase {
         let address = Field(type: .fieldNumber, placeholder: "Address", id: "Address")
         let elementGroup2 = ElementsForm(fields: [address])
         staticFields.append(elementGroup2)
-        
-        let fe = FormElement(formName: "forms", distributionChannelCode: "xxx", elementsForm: staticFields)
-        forms!.setElements(with: fe)
+        let formE = FormElement(formName: "forms", distributionChannelCode: "xxx", elementsForm: staticFields)
+        forms!.setElements(with: formE)
         forms!.setViewController(with: dummyVC!)
         forms!.build()
     }
-    
     override func tearDown() {
         dummyVC = nil
+    }
+    func testHexColor() {
+        let blackColor = UIColor.hexStringToUIColor(hex: "#0000000")
+        XCTAssertNotNil(blackColor)
+        XCTAssertNotNil(UIColor.secondaryPrimaryColor)
     }
 
     func testPerformanceExample() {
@@ -48,4 +52,3 @@ class ESSDynamicFormTests: XCTestCase {
     }
 
 }
-

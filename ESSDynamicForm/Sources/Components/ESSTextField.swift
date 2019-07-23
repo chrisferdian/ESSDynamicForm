@@ -14,24 +14,20 @@ class ESSTextField: UITextField {
      * Bottom line at the bottom of textField
      */
     var borderColor = UIColor.hexStringToUIColor(hex: "E0E0E0")
-    
     /**
      * Width of bottom line
      */
-    var borderWidth:Double = 1.0
+    var borderWidth: Double = 1.0
     let labelError = UILabel()
     let label = UILabel(frame: .zero)
-    var placeholderText:String = ""
+    var placeholderText: String = ""
     let padding = UIEdgeInsets(top: 0, left: 0, bottom: 5, right: 0)
-    
     override open func textRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.inset(by: padding)
     }
-    
     override open func placeholderRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.inset(by: padding)
     }
-    
     override open func editingRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.inset(by: padding)
     }
@@ -45,7 +41,6 @@ class ESSTextField: UITextField {
         self.font = UIFont.systemFont(ofSize: 16)
         self.textColor = UIColor.hexStringToUIColor(hex: "212121")
     }
-    
     /**
      * Initialize for programmatically
      */
@@ -56,15 +51,20 @@ class ESSTextField: UITextField {
         self.font = UIFont.systemFont(ofSize: 16)
         self.textColor = UIColor.hexStringToUIColor(hex: "212121")
     }
-    
     override func willMove(toSuperview newSuperview: UIView?) {
         if newSuperview != nil {
-            NotificationCenter.default.addObserver(self, selector: #selector(textFieldDidEndEditing), name: UITextField.textDidEndEditingNotification, object: self)
-            
-            NotificationCenter.default.addObserver(self, selector: #selector(textFieldDidBeginEditing), name: UITextField.textDidBeginEditingNotification, object: self)
-        } else {
-            NotificationCenter.default.removeObserver(self)
+            NotificationCenter.default.addObserver(
+                self, selector: #selector(textFieldDidEndEditing),
+                name: UITextField.textDidEndEditingNotification, object: self
+            )
+            NotificationCenter.default.addObserver(
+                self, selector: #selector(textFieldDidBeginEditing),
+                name: UITextField.textDidBeginEditingNotification, object: self
+            )
         }
+    }
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     /**
      * This function called when user start editing textField
@@ -88,7 +88,6 @@ class ESSTextField: UITextField {
             removeLabel()
         }
     }
-    
     func removeLabel() {
         UIView.animate(withDuration: 0.3) {
             self.label.removeFromSuperview()
@@ -106,13 +105,21 @@ class ESSTextField: UITextField {
         lineView.backgroundColor = borderColor
         lineView.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(lineView)
-        
-        let metrics = ["width" : NSNumber(value: borderWidth)]
-        let views = ["lineView" : lineView]
-        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[lineView]|", options:NSLayoutConstraint.FormatOptions(rawValue: 0), metrics:metrics, views:views))
-        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[lineView(width)]|", options:NSLayoutConstraint.FormatOptions(rawValue: 0), metrics:metrics, views:views))
+        let metrics = ["width": NSNumber(value: borderWidth)]
+        let views = ["lineView": lineView]
+        self.addConstraints(
+            NSLayoutConstraint.constraints(
+                withVisualFormat: "H:|[lineView]|", options: NSLayoutConstraint.FormatOptions(rawValue: 0),
+                metrics: metrics, views: views
+            )
+        )
+        self.addConstraints(
+            NSLayoutConstraint.constraints(
+                withVisualFormat: "V:[lineView(width)]|", options: NSLayoutConstraint.FormatOptions(rawValue: 0),
+                metrics: metrics, views: views
+            )
+        )
     }
-    
     /**
      * Create label on top of textField
      * - author: Chris Ferdian <chrisferdian@onoff.insure>
@@ -132,11 +139,10 @@ class ESSTextField: UITextField {
         }
         self.placeholder = ""
     }
-    
     /**
      * Create label at the bottom
      */
-    public func createBottomNote(message:String) {
+    public func createBottomNote(message: String) {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -146,25 +152,22 @@ class ESSTextField: UITextField {
         label.topAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         label.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
     }
-    
     /**
      * Create error message at the bottom
      */
-    public func setErrorNote(message:String) {
+    public func setErrorNote(message: String) {
         labelError.font = UIFont.systemFont(ofSize: 12)
         labelError.translatesAutoresizingMaskIntoConstraints = false
         labelError.text = message
         labelError.textColor = .red
         self.addSubview(labelError)
-        labelError.topAnchor.constraint(equalTo: self.bottomAnchor, constant:2).isActive = true
+        labelError.topAnchor.constraint(equalTo: self.bottomAnchor, constant: 2).isActive = true
         labelError.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
         UIView.animate(withDuration: 0.2, animations: {
             self.setupUI()
         })
     }
-    
     public func removeError() {
         self.setErrorNote(message: "")
     }
 }
-

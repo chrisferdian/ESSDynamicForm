@@ -8,6 +8,6 @@
 
 import Foundation
 
-public protocol ESSDynamicFormDelegate:class {
-    func formResponse(form:ESSDynamicForm, didFinishFormWithData data:[FormResponse])
+public protocol ESSDynamicFormDelegate: class {
+    func formResponse(form: ESSDynamicForm, didFinishFormWithData data: [FormResponse])
 }

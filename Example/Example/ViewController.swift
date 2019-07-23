@@ -11,30 +11,34 @@ import ESSDynamicForm
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var forms:ESSDynamicForm!
+    @IBOutlet weak var forms: ESSDynamicForm!
     var staticFields = [ElementsForm]()
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadStaticForm()
     }
 
     func loadStaticForm() {
-        //create static form eelements
-        let fieldName = Field(type: .fieldText, placeholder: "First Name", id: "firstName")
-        let lastName = Field(type: .fieldText, placeholder: "Last Name", id: "firstName")
+        //create static form elements
+        let fieldName = Field(type: .fieldText, placeholder: "First Name",
+                              id: "firstName", option: nil, positionType: nil)
+        let lastName = Field(type: .fieldText, placeholder: "Last Name",
+                             id: "firstName", option: nil, positionType: nil)
         let elementGroup1 = ElementsForm(fields: [fieldName, lastName])
         staticFields.append(elementGroup1)
-        let address = Field(type: .fieldNumber, placeholder: "Address", id: "Address")
+        let address = Field(type: .fieldNumber, placeholder: "Address",
+                            id: "Address", option: nil, positionType: nil)
         let elementGroup2 = ElementsForm(fields: [address])
         staticFields.append(elementGroup2)
-        
-        let fe = FormElement(formName: "forms", distributionChannelCode: "xxx", elementsForm: staticFields)
-        forms.setElements(with: fe)
+        let radio = Option(label: "Yes", value: "ya")
+        let radioNo = Option(label: "No", value: "no")
+        let fieldRadios = Field(type: .radioGroup, placeholder: "Jenis Kelamin",
+                                id: "jkel", option: [radio, radioNo], positionType: "vertical")
+
+        staticFields.append(ElementsForm(fields: [fieldRadios]))
+        let formE = FormElement(formName: "forms", distributionChannelCode: "xxx", elementsForm: staticFields)
+        forms.setElements(with: formE)
         forms.setViewController(with: self)
         forms.build()
     }
-
 }
-

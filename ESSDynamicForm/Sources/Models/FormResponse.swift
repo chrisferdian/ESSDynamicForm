@@ -11,8 +11,7 @@ import Foundation
 public class FormResponse: Codable {
     let key: String?
     let value: String?
-    
-    public init(key:String, value:String) {
+    public init(key: String, value: String) {
         self.key = key
         self.value = value
     }
