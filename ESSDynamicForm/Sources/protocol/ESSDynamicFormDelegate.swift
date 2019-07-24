@@ -9,5 +9,5 @@
 import Foundation
 
 public protocol ESSDynamicFormDelegate: class {
-    func formResponse(form: ESSDynamicForm, didFinishFormWithData data: [FormResponse])
+    func formResponse(form: ESSDynamicForm, didFinishFormWithData data: [String:Any])
 }

@@ -24,6 +24,7 @@ public class ESSDynamicForm: UIView {
     private var hostVC: UIViewController!
     weak var delegate: ESSDynamicFormDelegate?
     public var margin: CGFloat = 16
+    public var fieldValues = [String:Any]()
     //Use this init for programmatically implementation
     init(with mainController: UIViewController, frame: CGRect, margin: CGFloat = 16, delegate: ESSDynamicFormDelegate) {
         self.init()
@@ -87,13 +88,14 @@ public class ESSDynamicForm: UIView {
             guard let placeholder = element.placeholder else { return }
             guard let identifire = element.id else { return }
             if element.type == TypeEnum.fieldText {
+                print(identifire)
                 self.addTextField(with: placeholder, identifire: identifire,
                                   inputType: .default, stackview: horizontalStack, fieldInputView: nil)
             } else if element.type == TypeEnum.fieldNumber {
                 self.addTextField(with: placeholder, identifire: identifire,
                                   inputType: .numberPad, stackview: horizontalStack, fieldInputView: nil)
             } else if element.type == TypeEnum.pickerImage {
-                self.addImageView(with: UIImage(named: "")!, identifier: identifire,
+                self.addImageView(with: UIImage(named: "placeholder")!, identifier: identifire,
                                   stackview: horizontalStack)
             } else if element.type == TypeEnum.fieldDate {
                 self.addTextField(with: placeholder, identifire: identifire,
@@ -113,7 +115,7 @@ public class ESSDynamicForm: UIView {
                 self.addTextField(with: placeholder, identifire: identifire,
                                   inputType: .numberPad, stackview: nil, fieldInputView: nil)
             } else if element.type == TypeEnum.pickerImage {
-                self.addImageView(with: UIImage(named: "")!, identifier: identifire,
+                self.addImageView(with: UIImage(named: "placeholder"), identifier: identifire,
                                   stackview: nil)
             } else if element.type == TypeEnum.fieldText {
                 self.addTextField(with: placeholder, identifire: identifire,
@@ -124,12 +126,14 @@ public class ESSDynamicForm: UIView {
             }
         }
     }
-    internal func addImageView(with placeholder: UIImage, identifier: String, stackview: UIStackView?) {
+    internal func addImageView(with placeholder: UIImage?, identifier: String, stackview: UIStackView?) {
         let imageVContainer = UIImageView(frame: .zero)
         imageVContainer.heightAnchor.constraint(equalToConstant: 275).isActive = true
         imageVContainer.widthAnchor.constraint(equalToConstant: scrollable.frame.width).isActive = true
         imageVContainer.contentMode = .scaleAspectFill
-        imageVContainer.image = placeholder
+        if placeholder != nil {
+            imageVContainer.image = placeholder
+        }
         if stackview != nil {
             stackview?.addArrangedSubview(imageVContainer)
         } else {
@@ -165,6 +169,7 @@ public class ESSDynamicForm: UIView {
             }
             hostVC.present(popOverContent, animated: true, completion: nil)
         }
+        textfield.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         if stackview != nil {
             stackview?.addArrangedSubview(textfield)
         } else {
@@ -177,6 +182,7 @@ public class ESSDynamicForm: UIView {
         segmented.accessibilityIdentifier = identifire
         segmented.translatesAutoresizingMaskIntoConstraints = false
         segmented.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        segmented.addTarget(self, action: #selector(segmentedDidChange(_:)), for: .valueChanged)
         DispatchQueue.main.async {
             self.scrollable.stackView.addArrangedSubview(segmented)
             segmented.widthAnchor.constraint(equalTo: self.scrollable.stackView.widthAnchor).isActive = true
@@ -200,36 +206,34 @@ public class ESSDynamicForm: UIView {
         }
     }
     public func getFormData() {
-        var response = [FormResponse]()
-        for viewFromStack in scrollable.stackView.arrangedSubviews {
-            if let field = viewFromStack as? UITextField {
-                let res = FormResponse(key: field.accessibilityIdentifier ?? "", value: field.text ?? "")
-                response.append(res)
-            }
-            if let stack = viewFromStack as? UIStackView {
-                for viewFromHorizontal in stack.arrangedSubviews {
-                    if let textField = viewFromHorizontal as? UITextField {
-                        let res = FormResponse(key: textField.accessibilityIdentifier ?? "",
-                                               value: textField.text ?? "")
-                        response.append(res)
-                    }
-                }
-            }
-        }
+        print(fieldValues)
         DispatchQueue.main.async {
-            self.delegate?.formResponse(form: self, didFinishFormWithData: response)
+            self.delegate?.formResponse(form: self, didFinishFormWithData: self.fieldValues)
         }
     }
     @IBAction func jumpToViewAction(_ sender: Any) {
         scrollable.scrollToItem(index: 11)
     }
+    //
+    @objc func segmentedDidChange(_ segmented: UISegmentedControl) {
+        let selectedIndex = segmented.selectedSegmentIndex
+        fieldValues.updateValue(
+            segmented.titleForSegment(at: selectedIndex) ?? "",
+            forKey: segmented.accessibilityIdentifier ?? ""
+        )
+    }
+    //
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        fieldValues.updateValue(textField.text ?? "", forKey: textField.accessibilityIdentifier ?? "")
+    }
 }
 extension ESSDynamicForm: ImagePickerDelegate {
-    public func didSelect(image: UIImage?) {
+    public func didSelect(image: UIImage?, url: URL?) {
         for viewFromStack in scrollable.stackView.arrangedSubviews {
             if let imageV = viewFromStack as? UIImageView {
                 if (imageV.accessibilityIdentifier?.elementsEqual(currentImageViewIdentifire))! {
                     imageV.image = image
+                    self.fieldValues.updateValue(url!, forKey: imageV.accessibilityIdentifier ?? "")
                 }
             }
         }

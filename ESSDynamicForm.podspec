@@ -30,7 +30,7 @@ s.framework = "UIKit"
 s.source_files = "ESSDynamicForm/**/*.{swift}"
 
 # 9
-#s.resources = "ESSDynamicForm/**/*.{png,jpeg,jpg,storyboard,xib,xcassets}"
+s.resources = "ESSDynamicForm/**/*.{png,jpeg,jpg,storyboard,xib,xcassets}"
 
 # 10
 s.swift_version = "4.2"

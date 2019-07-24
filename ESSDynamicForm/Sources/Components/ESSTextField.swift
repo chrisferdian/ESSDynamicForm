@@ -46,7 +46,6 @@ class ESSTextField: UITextField {
      */
     override init(frame: CGRect) {
         super.init(frame: frame)
-//        delegate = self
         setupUI()
         self.font = UIFont.systemFont(ofSize: 16)
         self.textColor = UIColor.hexStringToUIColor(hex: "212121")
@@ -170,4 +169,5 @@ class ESSTextField: UITextField {
     public func removeError() {
         self.setErrorNote(message: "")
     }
+    
 }
