@@ -10,7 +10,7 @@ import UIKit
 import ESSDynamicForm
 
 class DummyViewController: UIViewController, ESSDynamicFormDelegate {
-    func formResponse(form: ESSDynamicForm, didFinishFormWithData data: [FormResponse]) {}
+    func formResponse(form: ESSDynamicForm, didFinishFormWithData data: [String: Any]) {}
     override func viewDidLoad() {
         super.viewDidLoad()
     }

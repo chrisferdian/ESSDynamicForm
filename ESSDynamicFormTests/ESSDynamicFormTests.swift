@@ -18,7 +18,8 @@ class ESSDynamicFormTests: XCTestCase {
     override func setUp() {
         dummyVC = DummyViewController()
         forms = ESSDynamicForm(with: dummyVC!, frame: .init(x: 0, y: 0,
-                                                            width: 375, height: 400), margin: 16, delegate: dummyVC!)
+                                                        width: 375, height: 400), margin: 16, delegate: dummyVC!)
+        forms?.updateConstraints()
     }
 
     func testLoadStaticForm() {
@@ -33,22 +34,34 @@ class ESSDynamicFormTests: XCTestCase {
         let formE = FormElement(formName: "forms", distributionChannelCode: "xxx", elementsForm: staticFields)
         forms!.setElements(with: formE)
         forms!.setViewController(with: dummyVC!)
+        forms!.addImageView(with: nil, identifier: "profilePicture", stackview: nil)
         forms!.build()
     }
-    override func tearDown() {
-        dummyVC = nil
+    func testgetValue() {
+        XCTAssertNotNil(forms?.fieldValues)
+    }
+    func testOptionModel() {
+        let optionYES = Option(label: "Yes", value: "Y")
+        XCTAssertEqual(optionYES.label, "Yes")
+    }
+    func testTextView() {
+        let textview = ESSTextView(frame: .zero, textContainer: .init())
+        XCTAssertNotNil(textview)
+    }
+    func testTextField() {
+        let textfield = ESSTextField(frame: .zero)
+        XCTAssertNotNil(textfield)
     }
     func testHexColor() {
         let blackColor = UIColor.hexStringToUIColor(hex: "#0000000")
         XCTAssertNotNil(blackColor)
         XCTAssertNotNil(UIColor.secondaryPrimaryColor)
+        forms?.backgroundColor = UIColor.secondaryPrimaryColor()
     }
-
+    override func tearDown() {
+        dummyVC = nil
+    }
     func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+        self.measure {}
     }
-
 }

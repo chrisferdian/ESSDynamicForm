@@ -41,4 +41,8 @@ class ViewController: UIViewController {
         forms.setViewController(with: self)
         forms.build()
     }
+    // MARK: Getting form values
+    @IBAction func proses() {
+        print(forms.fieldValues)
+    }
 }
