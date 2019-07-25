@@ -26,6 +26,11 @@ Description of what the lane does
 fastlane ios lint
 ```
 Run lint
+### ios scan_local
+```
+fastlane ios scan_local
+```
+Scan coverage local
 
 ----
 

@@ -4,3 +4,6 @@ Podfile.lock
 Podfile
 DS_Store
 xcuserdata
+local-reports
+DerivedData
+sonar-reports

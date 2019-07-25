@@ -31,4 +31,9 @@ lane :lint do
     ignore_exit_status: true
   )
 end
+desc "Scan coverage local"
+  lane :scan_local do
+    scan(clean: true, scheme: "ESSDynamicForm", code_coverage: true, device: "iPad Pro (10.5-inch) (11.4)", derived_data_path: "./DerivedData", output_directory: "./sonar-reports")
+    slather(html: true, workspace: "./ESSDynamicForm.xcworkspace", input_format: "profdata", jenkins: true, verbose: true, scheme: "ESSDynamicForm", build_directory: "./DerivedData", output_directory: "./local-reports", proj: "./ESSDynamicForm.xcodeproj")
+  end
 end
