@@ -9,7 +9,7 @@
 import UIKit
 
 public protocol ImagePickerDelegate: class {
-    func didSelect(image: UIImage?, url:URL?)
+    func didSelect(image: UIImage?, url: URL?)
 }
 
 open class ImagePicker: NSObject {

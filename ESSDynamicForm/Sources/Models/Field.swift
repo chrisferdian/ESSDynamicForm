@@ -21,7 +21,9 @@ public struct Field: Codable {
         case option
         case positionType
     }
-    public init(type: TypeEnum?, placeholder: String?, id: String?, option: [Option]? = nil, positionType: String? = nil) {
+    public init(
+        type: TypeEnum?, placeholder: String?, id: String?, option: [Option]? = nil, positionType: String? = nil
+    ) {
         self.type = type
         self.placeholder = placeholder
         self.id = id

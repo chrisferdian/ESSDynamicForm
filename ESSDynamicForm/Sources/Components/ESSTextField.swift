@@ -169,5 +169,4 @@ class ESSTextField: UITextField {
     public func removeError() {
         self.setErrorNote(message: "")
     }
-    
 }

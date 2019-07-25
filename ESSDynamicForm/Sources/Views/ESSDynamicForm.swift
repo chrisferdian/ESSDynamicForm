@@ -24,7 +24,7 @@ public class ESSDynamicForm: UIView {
     private var hostVC: UIViewController!
     weak var delegate: ESSDynamicFormDelegate?
     public var margin: CGFloat = 16
-    public var fieldValues = [String:Any]()
+    public var fieldValues = [String: Any]()
     //Use this init for programmatically implementation
     init(with mainController: UIViewController, frame: CGRect, margin: CGFloat = 16, delegate: ESSDynamicFormDelegate) {
         self.init()

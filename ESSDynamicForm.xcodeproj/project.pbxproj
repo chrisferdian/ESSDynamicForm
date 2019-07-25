@@ -243,6 +243,7 @@
 					};
 					B6DB7E3522D728DF00A4BF26 = {
 						CreatedOnToolsVersion = 10.2.1;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
