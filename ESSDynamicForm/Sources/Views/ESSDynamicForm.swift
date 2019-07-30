@@ -49,6 +49,7 @@ public class ESSDynamicForm: UIView {
         super.awakeFromNib()
         setupScrollable()
     }
+    
     private func setupScrollable() {
         scrollable.frame = frame
         addSubview(scrollable)
@@ -100,6 +101,9 @@ public class ESSDynamicForm: UIView {
             } else if element.type == TypeEnum.fieldDate {
                 self.addTextField(with: placeholder, identifire: identifire,
                                   inputType: .default, stackview: horizontalStack, fieldInputView: datePicker)
+            } else if element.type == TypeEnum.fieldEmail {
+                self.addTextField(with: placeholder, identifire: identifire,
+                                  inputType: .emailAddress, stackview: horizontalStack)
             }
         }
         scrollable.stackView.addArrangedSubview(horizontalStack)
@@ -110,19 +114,22 @@ public class ESSDynamicForm: UIView {
             guard let identifire = element.id else { return }
             if element.type == TypeEnum.fieldText {
                 self.addTextField(with: placeholder, identifire: identifire,
-                                  inputType: .default, stackview: nil, fieldInputView: nil)
+                                  inputType: .default)
             } else if element.type == TypeEnum.fieldNumber {
                 self.addTextField(with: placeholder, identifire: identifire,
-                                  inputType: .numberPad, stackview: nil, fieldInputView: nil)
+                                  inputType: .numberPad)
             } else if element.type == TypeEnum.pickerImage {
                 self.addImageView(with: UIImage(named: "placeholder"), identifier: identifire,
                                   stackview: nil)
             } else if element.type == TypeEnum.fieldText {
                 self.addTextField(with: placeholder, identifire: identifire,
-                                  inputType: .default, stackview: nil, fieldInputView: datePicker)
+                                  inputType: .default, fieldInputView: datePicker)
             } else if element.type == TypeEnum.radioGroup {
                 self.addRadioGroup(with: placeholder, identifire: identifire,
                                    stackView: nil, options: element.option ?? [Option]())
+            } else if element.type == TypeEnum.fieldEmail {
+                self.addTextField(with: placeholder, identifire: identifire,
+                                  inputType: .emailAddress, stackview: nil)
             }
         }
     }
@@ -148,10 +155,11 @@ public class ESSDynamicForm: UIView {
         )
     }
     internal func addTextField(with placeholder: String, identifire: String,
-                               inputType: UIKeyboardType, stackview: UIStackView?, fieldInputView: UIView?) {
+                               inputType: UIKeyboardType, stackview: UIStackView? = nil, fieldInputView: UIView? = nil) {
         let textfield = UITextField(frame: .zero)
         textfield.accessibilityIdentifier = identifire
         textfield.placeholder = placeholder
+        textfield.maxLength = 5
         textfield.heightAnchor.constraint(equalToConstant: 55).isActive = true
         textfield.keyboardType = inputType
         textfield.widthAnchor.constraint(equalToConstant: scrollable.frame.width).isActive = true
@@ -210,6 +218,11 @@ public class ESSDynamicForm: UIView {
         DispatchQueue.main.async {
             self.delegate?.formResponse(form: self, didFinishFormWithData: self.fieldValues)
         }
+    }
+    private func validate(YourEMailAddress: String) -> Bool {
+        let REGEX: String
+        REGEX = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}"
+        return NSPredicate(format: "SELF MATCHES %@", REGEX).evaluate(with: YourEMailAddress)
     }
     @IBAction func jumpToViewAction(_ sender: Any) {
         scrollable.scrollToItem(index: 11)

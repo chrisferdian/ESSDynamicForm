@@ -11,6 +11,7 @@ import Foundation
 public enum TypeEnum: String, Codable {
     case fieldText = "fieldText"
     case fieldNumber = "fieldNumber"
+    case fieldEmail = "fieldEmail"
     case pickerImage = "pickerImage"
     case fieldDate = "fieldDate"
     case textView = "textView"
